@@ -5,9 +5,18 @@ import ChildB from './ChildB';
 function Parent() {
   const [parentData, setParentData] = useState('Parent Data');
 
+  const [contrl, setContrl] = useState(true);
+
   return (
     <>
-      <ChildA parentData={parentData} />
+      <button
+        onClick={() => {
+          setContrl(!contrl);
+        }}
+      >
+        {contrl ? '讓ChildA消失' : '讓ChildA顯現'}
+      </button>
+      {contrl && <ChildA parentData={parentData} />}
       <ChildB setParentData={setParentData} />
     </>
   );
